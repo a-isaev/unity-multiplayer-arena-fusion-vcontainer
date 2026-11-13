@@ -1,0 +1,55 @@
+# --- Unity generated ---
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/Assets/Plugins/Editor/JetBrains*
+/Assets/StreamingAssets/aa*
+/Assets/AddressableAssetsData/*/*.bin*
+/ServerData/
+
+# --- IDE ---
+.vs/
+.idea/
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# --- Build artifacts ---
+*.apk
+*.aab
+*.unitypackage
+*.app
+crashlytics-build.properties
+sysinfo.txt
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Secrets: Photon App ID (template: Assets/_Project/Settings/Photon/photon_config.example.json) ---
+/Assets/_Project/Settings/Photon/Resources/
+/Assets/_Project/Settings/Photon/Resources.meta
+# Fusion creates this asset and it can hold an App ID. We pass the App ID from our own config instead.
+/Assets/Photon/Fusion/Resources/PhotonAppSettings.asset
+/Assets/Photon/Fusion/Resources/PhotonAppSettings.asset.meta

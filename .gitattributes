@@ -1,0 +1,30 @@
+# Normalize line endings; Unity YAML is text and should merge with UnityYAMLMerge.
+* text=auto
+*.cs text diff=csharp eol=lf
+*.unity text merge=unityyamlmerge eol=lf
+*.prefab text merge=unityyamlmerge eol=lf
+*.asset text merge=unityyamlmerge eol=lf
+*.mat text merge=unityyamlmerge eol=lf
+*.meta text eol=lf
+
+# Binaries
+*.png binary
+*.jpg binary
+*.psd binary
+*.fbx binary
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.ttf binary
+*.otf binary
+
+# Third-party assets and plugins are excluded from GitHub language stats.
+# Spaces in paths must be written as [[:space:]] - "\ " does not work in .gitattributes.
+Assets/TextMesh[[:space:]]Pro/** linguist-vendored
+Assets/Photon/** linguist-vendored
+Assets/Plugins/** linguist-vendored
+Assets/AddressableAssetsData/** linguist-generated
+Packages/** linguist-vendored
+*.shader linguist-vendored
+*.cginc linguist-vendored
+*.hlsl linguist-vendored
