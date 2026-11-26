@@ -49,15 +49,14 @@ Assets/_Project/
 1. Unity **6000.6.x** with Android and/or WebGL build support.
 2. Clone and open the project. Packages (VContainer, UniTask) resolve from git via UPM.
 3. If `Assets/Photon` is missing, import Photon Fusion 2. Create a Fusion app in the
-   [Photon Dashboard](https://dashboard.photonengine.com). Copy the
-   [example config](Assets/_Project/Settings/Photon/photon_config.example.json) to
-   `Assets/_Project/Settings/Photon/Resources/photon_config.json` and set `AppIdFusion`.
-   Create the `Resources` folder if needed. Git ignores the local config.
-4. Open `Assets/_Project/Scenes/Bootstrap.unity` and press Play.
+   [Photon Dashboard](https://dashboard.photonengine.com/dashboard). In Unity, open
+   **CoinRush → Photon Settings**, paste its Fusion App ID, and click **Update App ID**.
+   This creates or updates the git-ignored local config.
+4. The first time the editor opens the project, it opens `Bootstrap`. Press **Play** in that scene.
 
 ### Trying the room lobby
 
-Open `Bootstrap` and press Play. Choose **Create room** on the host, then **Copy code**.
+Press **Play** in the `Bootstrap` scene. Choose **Create room** on the host, then **Copy code**.
 On a second instance, enter the code and choose **Join room**. Both instances should show
 two players. Use the same Photon App ID and region on both. The lobby uses `eu` when
 `FixedRegion` is empty. Use matching builds on both clients. Once connected, the test

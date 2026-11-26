@@ -32,7 +32,7 @@ namespace CoinRush.Infrastructure.Flow
 
             if (!_photonConfig.TryGet(out _))
                 Debug.LogWarning("[Bootstrap] Photon config is missing. Online play will not work. " +
-                                 "Run 'Coin Rush > Create Local Photon Config' and paste your Fusion App ID.");
+                                 "Open 'CoinRush > Photon Settings' and save your Fusion App ID.");
 
             var overlay = new GameObject("Loading Overlay").AddComponent<LoadingOverlay>();
             await UniTask.Yield(cancellation);

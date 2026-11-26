@@ -27,10 +27,7 @@ namespace CoinRush.Editor
         private const string VContainerSettingsPath = SettingsDir + "/VContainerSettings.asset";
         private const string ProjectScopePrefabPath = InfraPrefabsDir + "/ProjectLifetimeScope.prefab";
 
-        private const string PhotonExamplePath = SettingsDir + "/Photon/photon_config.example.json";
-        private const string PhotonLocalPath = SettingsDir + "/Photon/Resources/" + PhotonConfigProvider.ResourcePath + ".json";
-
-        [MenuItem("Coin Rush/Setup/Run Project Setup")]
+        [MenuItem("CoinRush/Setup/Run Project Setup")]
         public static void Run()
         {
             var gameConfig = EnsureGameConfig();
@@ -50,24 +47,6 @@ namespace CoinRush.Editor
 
             AssetDatabase.SaveAssets();
             Debug.Log("[ProjectSetup] Done.");
-        }
-
-        [MenuItem("Coin Rush/Create Local Photon Config")]
-        public static void CreateLocalPhotonConfig()
-        {
-            if (File.Exists(PhotonLocalPath))
-            {
-                Debug.Log($"[ProjectSetup] {PhotonLocalPath} already exists.");
-            }
-            else
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(PhotonLocalPath)!);
-                File.Copy(PhotonExamplePath, PhotonLocalPath);
-                AssetDatabase.ImportAsset(PhotonLocalPath);
-                Debug.Log($"[ProjectSetup] Created {PhotonLocalPath}. Paste your Fusion App ID there (the file is git-ignored).");
-            }
-
-            Selection.activeObject = AssetDatabase.LoadAssetAtPath<TextAsset>(PhotonLocalPath);
         }
 
         private static GameConfig EnsureGameConfig()

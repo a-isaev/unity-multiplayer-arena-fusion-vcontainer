@@ -10,13 +10,12 @@ Coin Rush — сетевая арена с видом сверху на 2–4 и
 
 1. Открой проект в Unity **6000.6.9f1**. Дождись импорта ассетов и установки зависимостей.
 2. Если папки `Assets/Photon` нет, скачай [Photon Fusion 2 SDK](https://doc.photonengine.com/fusion/v2/getting-started/sdk-download) и импортируй пакет через **Assets → Import Package → Custom Package**.
-3. В [Photon Dashboard](https://dashboard.photonengine.com) создай приложение с настройками **Multiplayer Game**, **Fusion**, **Fusion 2**. Скопируй его **App ID**.
-4. Если локальный конфиг уже настроен, переходи к запуску. Иначе скопируй [шаблон](Assets/_Project/Settings/Photon/photon_config.example.json) в `Assets/_Project/Settings/Photon/Resources/photon_config.json`, при необходимости создав папку `Resources`. Вставь App ID в поле `AppIdFusion`. Git игнорирует этот файл.
-5. Оставь `FixedRegion` пустым, чтобы использовать регион `eu`, или укажи один и тот же регион у обоих клиентов.
+3. В [Photon Dashboard](https://dashboard.photonengine.com) создай приложение типа **Multiplayer Game** с SDK **Fusion 2**. Скопируй его **App ID**.
+4. В Unity открой **CoinRush → Photon Settings**, вставь App ID и нажми **Update App ID**. Unity создаст или обновит локальный конфиг. Git игнорирует этот файл.
 
 ## Проверка входа по коду
 
-1. Открой сцену [Bootstrap](Assets/_Project/Scenes/Bootstrap.unity) и нажми **Play**. Стартовый экран загрузит материал арены из локальной группы Addressables, затем откроет меню.
+1. При первом открытии проекта Unity откроет сцену [Bootstrap](Assets/_Project/Scenes/Bootstrap.unity). Нажми **Play** в этой сцене. Стартовый экран загрузит материал арены из локальной группы Addressables, затем откроет меню.
 2. В первом экземпляре игры нажми **Create room**, затем **Copy code**. Оставь этот экземпляр запущенным.
 3. Запусти второй экземпляр, например отдельную настольную сборку из того же проекта. В поле **Room code** вставь код и нажми **Join room**.
 4. При успешном подключении оба экземпляра покажут **Players: 2/4** при стандартном лимите игроков. Кнопка **Leave room** выводит из комнаты.
