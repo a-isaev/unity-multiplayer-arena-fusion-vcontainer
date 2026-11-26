@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ac9da241f29343da8323ddc934b036c5
+PluginImporter:
+  serializedVersion: 2
+  platformData:
+  - first:
+      Any:
+    second:
+      enabled: 0
+      settings: {}
+  - first:
+      WebGL: WebGL
+    second:
+      enabled: 1
+      settings: {}

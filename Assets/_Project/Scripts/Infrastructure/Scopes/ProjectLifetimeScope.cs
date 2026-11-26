@@ -1,4 +1,5 @@
 using CoinRush.Infrastructure.Config;
+using CoinRush.Infrastructure.Flow;
 using CoinRush.Infrastructure.SceneManagement;
 using UnityEngine;
 using VContainer;
@@ -21,6 +22,7 @@ namespace CoinRush.Infrastructure.Scopes
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(_gameConfig);
+            builder.Register<ArenaAssets>(Lifetime.Singleton);
             builder.Register<ISceneLoader, SceneLoader>(Lifetime.Singleton);
             builder.Register<IPhotonConfigProvider, PhotonConfigProvider>(Lifetime.Singleton);
         }

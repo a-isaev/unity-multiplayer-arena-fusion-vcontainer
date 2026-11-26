@@ -3,6 +3,9 @@
     "rootNamespace": "CoinRush.Infrastructure",
     "references": [
         "VContainer",
+        "Photon.Realtime",
+        "CoinRush.Gameplay",
+        "Fusion.Unity",
         "UniTask",
         "Unity.Addressables",
         "Unity.ResourceManager"

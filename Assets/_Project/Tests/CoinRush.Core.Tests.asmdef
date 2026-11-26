@@ -1,0 +1,7 @@
+{
+    "name": "CoinRush.Core.Tests",
+    "rootNamespace": "CoinRush.Tests",
+    "references": ["CoinRush.Core"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

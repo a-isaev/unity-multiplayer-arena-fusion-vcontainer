@@ -4,6 +4,14 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/.utmp/
+/Data/Plugins/
+/Assets/AddressableAssetsData/Android/
+/Assets/AddressableAssetsData/Android.meta
+/Assets/AddressableAssetsData/OSX/
+/Assets/AddressableAssetsData/OSX.meta
+/Assets/AddressableAssetsData/WebGL/
+/Assets/AddressableAssetsData/WebGL.meta
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 /[Mm]emoryCaptures/

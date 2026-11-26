@@ -1,0 +1,11 @@
+{
+    "name": "CoinRush.Gameplay",
+    "rootNamespace": "CoinRush.Gameplay",
+    "references": [
+        "Fusion.Unity",
+        "CoinRush.Core",
+        "Unity.InputSystem",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime"
+    ]
+}

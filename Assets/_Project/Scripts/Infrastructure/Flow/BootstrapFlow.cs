@@ -16,12 +16,14 @@ namespace CoinRush.Infrastructure.Flow
         private readonly GameConfig _gameConfig;
         private readonly IPhotonConfigProvider _photonConfig;
         private readonly ISceneLoader _sceneLoader;
+        private readonly ArenaAssets _arenaAssets;
 
-        public BootstrapFlow(GameConfig gameConfig, IPhotonConfigProvider photonConfig, ISceneLoader sceneLoader)
+        public BootstrapFlow(GameConfig gameConfig, IPhotonConfigProvider photonConfig, ISceneLoader sceneLoader, ArenaAssets arenaAssets)
         {
             _gameConfig = gameConfig;
             _photonConfig = photonConfig;
             _sceneLoader = sceneLoader;
+            _arenaAssets = arenaAssets;
         }
 
         public async UniTask StartAsync(CancellationToken cancellation)
@@ -32,12 +34,19 @@ namespace CoinRush.Infrastructure.Flow
                 Debug.LogWarning("[Bootstrap] Photon config is missing. Online play will not work. " +
                                  "Run 'Coin Rush > Create Local Photon Config' and paste your Fusion App ID.");
 
-            // Stage 4 will add async preloading here (Addressables), still before the menu.
+            var overlay = new GameObject("Loading Overlay").AddComponent<LoadingOverlay>();
             await UniTask.Yield(cancellation);
+            try
+            {
+                await _arenaAssets.LoadSurfaceAsync(cancellation);
+            }
+            catch (System.Exception exception) when (!cancellation.IsCancellationRequested)
+            {
+                overlay.Message = "Arena could not load. Restart Coin Rush to retry.";
+                Debug.LogException(exception);
+                return;
+            }
 
-            // We do NOT pass `cancellation` here. Loading Menu unloads Bootstrap, which disposes this scope
-            // and cancels its token. The await would then throw OperationCanceledException
-            // even though the load itself succeeded.
             await _sceneLoader.LoadAsync(SceneNames.Menu);
         }
     }

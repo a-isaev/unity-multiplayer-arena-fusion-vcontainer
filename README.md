@@ -1,5 +1,7 @@
 # Coin Rush
 
+[Инструкция на русском](README.ru.md)
+
 Top-down mobile multiplayer arena for 2–4 players. Collect coins, dash into rivals to knock them away. Two-minute rounds; most coins wins.
 
 > 🚧 Work in progress. See [Roadmap](#roadmap).
@@ -46,15 +48,50 @@ Assets/_Project/
 
 1. Unity **6000.6.x** with Android and/or WebGL build support.
 2. Clone and open the project. Packages (VContainer, UniTask) resolve from git via UPM.
-3. Photon: create a **Fusion 2** app at [dashboard.photonengine.com](https://dashboard.photonengine.com), then in Unity run
-   **Coin Rush → Create Local Photon Config** and paste the App ID into the created `photon_config.json` (git-ignored).
+3. If `Assets/Photon` is missing, import Photon Fusion 2. Create a Fusion app in the
+   [Photon Dashboard](https://dashboard.photonengine.com). Copy the
+   [example config](Assets/_Project/Settings/Photon/photon_config.example.json) to
+   `Assets/_Project/Settings/Photon/Resources/photon_config.json` and set `AppIdFusion`.
+   Create the `Resources` folder if needed. Git ignores the local config.
 4. Open `Assets/_Project/Scenes/Bootstrap.unity` and press Play.
+
+### Trying the room lobby
+
+Open `Bootstrap` and press Play. Choose **Create room** on the host, then **Copy code**.
+On a second instance, enter the code and choose **Join room**. Both instances should show
+two players. Use the same Photon App ID and region on both. The lobby uses `eu` when
+`FixedRegion` is empty. Use matching builds on both clients. Once connected, the test
+arena opens automatically. Move your cyan avatar with WASD or the arrow keys and
+check that the other window shows it moving. During an active round, only disconnected
+participants can return. Their score is restored while the round timer keeps running.
+
+## Verification
+
+- **macOS:** played a full match and checked room capacity and score restoration after reconnecting.
+- **Android:** checked coin rendering, simultaneous touch movement and dash, and the enlarged lobby controls on device.
+- **WebGL:** joined a macOS host, played a match and verified score restoration after refreshing the same browser tab.
+- **EditMode:** 10 Unity NUnit cases passed, covering round rules and contested pickups.
+
+### Android frame pacing
+
+The same Android phone was measured for 20 seconds per run using the game's Android
+SurfaceFlinger layer. After disabling mobile Bloom and HDR and updating coin visibility
+only when it changes, the mean time between presented frames fell from **21.6 ms**
+to **16.0 ms**. SurfaceFlinger reported **46.3 → 62.5 FPS**. The 32–33 ms intervals
+seen in about one-third of the baseline sample disappeared in the repeat sample.
+These measurements cover presented frames on one device.
 
 ## Roadmap
 
-- [x] Project scaffold: DI root scope, bootstrap → menu flow
-- [ ] Fusion 2 connection, lobby (create / join by code), player movement with prediction
-- [ ] Coins, score, dash with cooldown & knockback, round timer, results, restart
-- [ ] MVP UI, Addressables loading screen
-- [ ] Shader Graph effects, bloom, mobile profiling (before/after numbers)
-- [ ] Android & WebGL builds, unit tests, final README
+- [x] Project scaffold, VContainer scopes, bootstrap and menu
+- [x] Fusion 2 rooms by code and predicted movement
+- [x] Coins, score, round timer, results, rematch, dash and knockback
+- [x] Lobby, match HUD, Android touch input and Addressables loading screen
+- [x] Shader Graph glow, URP bloom and EditMode tests for round rules
+- [x] Validate macOS and Android gameplay, Android touch input and frame pacing
+- [x] Build and test the experimental WebGL client against a native host
+- [x] Document platform checks and Android frame pacing
+- [x] Record a two-client match
+
+WebGL joins a room hosted on macOS or Android. The project treats WebGL Client–Server support as experimental because Fusion documents
+[performance and connection limitations](https://doc.photonengine.com/fusion/v2/fusion-choose).

@@ -1,0 +1,5 @@
+{
+    "name": "CoinRush.Core",
+    "rootNamespace": "CoinRush.Core",
+    "noEngineReferences": true
+}
